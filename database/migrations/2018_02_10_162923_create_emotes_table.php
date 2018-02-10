@@ -15,6 +15,11 @@ class CreateEmotesTable extends Migration
     {
         Schema::create('emotes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->enum('rarity', ['uncommon', 'common', 'rare', 'epic', 'legendary']);
+            $table->integer('vbucks');
+            $table->string('thumbnail');
+            $table->string('video');
             $table->timestamps();
         });
     }
