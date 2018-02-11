@@ -10031,7 +10031,7 @@ a.text-dark:focus {
 
 .emote-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   margin: 0 auto;
@@ -10046,31 +10046,52 @@ a.text-dark:focus {
 
 .emote-grid .single-emote.common {
   background-color: #c8cad6;
-  border-color: white;
+  background-image: radial-gradient(circle, #c8cad6, #707695);
+  border-color: #e5e6ec;
+}
+
+.emote-grid .single-emote.common .emote-title {
+  background-color: rgba(171, 174, 192, 0.5);
 }
 
 .emote-grid .single-emote.uncommon {
   background-color: #8CCC4E;
   background-image: radial-gradient(circle, #8CCC4E, #40641d);
-  border-color: #bfe39d;
+  border-color: #a6d776;
+}
+
+.emote-grid .single-emote.uncommon .emote-title {
+  background-color: rgba(114, 179, 52, 0.5);
 }
 
 .emote-grid .single-emote.rare {
   background-color: #66D2F9;
   background-image: radial-gradient(circle, #66D2F9, #078ebf);
-  border-color: #c8effd;
+  border-color: #97e0fb;
+}
+
+.emote-grid .single-emote.rare .emote-title {
+  background-color: rgba(53, 196, 247, 0.5);
 }
 
 .emote-grid .single-emote.epic {
   background-color: #C862F6;
   background-image: radial-gradient(circle, #C862F6, #800ab5);
-  border-color: #eac2fc;
+  border-color: #d992f9;
+}
+
+.emote-grid .single-emote.epic .emote-title {
+  background-color: rgba(183, 50, 243, 0.5);
 }
 
 .emote-grid .single-emote.legendary {
   background-color: #E59B5E;
   background-image: radial-gradient(circle, #E59B5E, #924f18);
-  border-color: #f3d2b6;
+  border-color: #ecb68a;
+}
+
+.emote-grid .single-emote.legendary .emote-title {
+  background-color: rgba(222, 128, 50, 0.5);
 }
 
 .emote-grid .emote-price {
@@ -10080,7 +10101,7 @@ a.text-dark:focus {
   color: #fff;
 }
 
-.emote-grid .edit {
+.emote-grid .emote-edit {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -10091,7 +10112,7 @@ a.text-dark:focus {
   z-index: 5;
 }
 
-.emote-grid .edit a {
+.emote-grid .emote-edit a {
   color: #000;
 }
 
@@ -10102,19 +10123,19 @@ a.text-dark:focus {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  padding: 15%;
+  padding: 5%;
 }
 
 .emote-grid .emote-title {
-  font-family: "BurbankBig";
-  color: #fff;
-  font-size: 32px;
-  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   bottom: 0;
   width: 100%;
+  padding: 0.5rem;
+  color: #fff;
   text-align: center;
-  padding: 1rem;
+  text-transform: uppercase;
+  font-family: "BurbankBig";
+  font-size: 24px;
 }
 
 .navbar-laravel {
