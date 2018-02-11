@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Emote;
 use Illuminate\Http\Request;
+Use Image;
+Use File;
 
 class EmotesController extends Controller
 {
@@ -38,7 +40,34 @@ class EmotesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       request()->validate([
+            'title' => 'required|string',
+            'rarity' => 'required|string',
+            'vbucks' => 'required|string',
+            'video' => 'required|string'
+            
+        ]);
+
+        if($request->thumbnail != ""){
+
+            $thumbnail = $request->file('thumbnail');
+                    
+            $fileName = str_slug($request->name) . '.' . $thumbnail->getClientOriginalExtension();
+            Image::make($thumbnail)->save(public_path('images/emotes/' . $fileName));
+
+        }
+
+        Emote::create([
+            'title' => request('title'),
+            'rarity' => request('rarity'),
+            'vbucks' => request('vbucks'),
+            'thumbnail' => $fileName,
+            'video' => request('video'),
+        ]);
+
+
+
+        return redirect('/emotes');
     }
 
     /**

@@ -10080,13 +10080,13 @@ a.text-dark:focus {
 }
 
 .emote-grid .single-emote.common {
-  background-color: #c8cad6;
-  background-image: radial-gradient(circle, #c8cad6, #707695);
-  border-color: #e5e6ec;
+  background-color: #c9cad8;
+  background-image: radial-gradient(circle, #c9cad8, #707398);
+  border-color: #e7e7ed;
 }
 
 .emote-grid .single-emote.common .emote-title {
-  background-color: rgba(171, 174, 192, 0.5);
+  background-color: rgba(171, 173, 195, 0.5);
 }
 
 .emote-grid .single-emote.uncommon {
@@ -10100,33 +10100,33 @@ a.text-dark:focus {
 }
 
 .emote-grid .single-emote.rare {
-  background-color: #66D2F9;
-  background-image: radial-gradient(circle, #66D2F9, #078ebf);
-  border-color: #97e0fb;
+  background-color: #1ac2fe;
+  background-image: radial-gradient(circle, #1ac2fe, #015d7e);
+  border-color: #4dd0fe;
 }
 
 .emote-grid .single-emote.rare .emote-title {
-  background-color: rgba(53, 196, 247, 0.5);
+  background-color: rgba(1, 168, 228, 0.5);
 }
 
 .emote-grid .single-emote.epic {
-  background-color: #C862F6;
-  background-image: radial-gradient(circle, #C862F6, #800ab5);
-  border-color: #d992f9;
+  background-color: #b83df2;
+  background-image: radial-gradient(circle, #b83df2, #63098d);
+  border-color: #c96df5;
 }
 
 .emote-grid .single-emote.epic .emote-title {
-  background-color: rgba(183, 50, 243, 0.5);
+  background-color: rgba(166, 16, 236, 0.5);
 }
 
 .emote-grid .single-emote.legendary {
-  background-color: #E59B5E;
-  background-image: radial-gradient(circle, #E59B5E, #924f18);
-  border-color: #ecb68a;
+  background-color: #eb9257;
+  background-image: radial-gradient(circle, #eb9257, #974712);
+  border-color: #f0b085;
 }
 
 .emote-grid .single-emote.legendary .emote-title {
-  background-color: rgba(222, 128, 50, 0.5);
+  background-color: rgba(230, 116, 41, 0.5);
 }
 
 .emote-grid .emote-price {
@@ -10141,9 +10141,10 @@ a.text-dark:focus {
   top: 10px;
   right: 10px;
   display: block;
-  background-color: #fff;
+  background-color: #f0ed63;
   padding: 4px 8px;
   font-size: 12px;
+  font-weight: 700;
   z-index: 5;
 }
 
