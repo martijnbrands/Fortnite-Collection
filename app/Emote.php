@@ -18,4 +18,9 @@ class Emote extends Model
         'thumbnail',
         'video'
     ];
+
+    public function getThumbnailAttribute($file)
+    {
+        return "/images/emotes/" . $file;
+    }
 }

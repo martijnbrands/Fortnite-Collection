@@ -14,7 +14,8 @@ class EmotesController extends Controller
      */
     public function index()
     {
-        //
+        $emotes = Emote::all();
+        return view('emotes.index', compact('emotes'));
     }
 
     /**

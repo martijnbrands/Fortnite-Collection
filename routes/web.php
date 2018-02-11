@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/emotes', 'EmotesController@index')->name('emotes');
+
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('/emotes/create', 'EmotesController@create')->name('emotes.create');
+    Route::post('/emotes/create', 'EmotesController@store')->name('emotes.store');
+});

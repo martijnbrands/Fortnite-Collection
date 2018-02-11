@@ -10000,3 +10000,84 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.single-emote {
+  width: 23.5%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  float: left;
+  height: 250px;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.single-emote:nth-child(4n + 4) {
+  margin-right: 0;
+}
+
+.single-emote.common {
+  background-color: #c8cad6;
+  border-color: #8e92aa;
+}
+
+.single-emote.common .emote-title {
+  background-color: rgba(142, 146, 170, 0.5);
+}
+
+.single-emote.uncommon {
+  background-color: #469b59;
+  border-color: #265531;
+}
+
+.single-emote.uncommon .emote-title {
+  background-color: rgba(38, 85, 49, 0.5);
+}
+
+.single-emote.rare {
+  background-color: #2777b2;
+  border-color: #153f5e;
+}
+
+.single-emote.rare .emote-title {
+  background-color: rgba(21, 63, 94, 0.5);
+}
+
+.single-emote.epic {
+  background-color: #833ca4;
+  border-color: #472159;
+}
+
+.single-emote.epic .emote-title {
+  background-color: rgba(71, 33, 89, 0.5);
+}
+
+.single-emote.legendary {
+  background-color: #de742c;
+  border-color: #8e4716;
+}
+
+.single-emote.legendary .emote-title {
+  background-color: rgba(142, 71, 22, 0.5);
+}
+
+.single-emote .emote-price {
+  padding: 1rem;
+}
+
+.single-emote img {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 15%;
+}
+
+.single-emote .emote-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+

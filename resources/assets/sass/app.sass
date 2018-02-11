@@ -9,5 +9,71 @@
 @import '~bootstrap/scss/bootstrap'
 
 .navbar-laravel
-  background-color: #fff
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04)
+	background-color: #fff
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04)
+
+
+.single-emote
+	width: 23.5%
+	margin-right: 2%
+	margin-bottom: 2%
+	float: left
+	height: 250px
+	border: 1px solid transparent
+	position: relative
+
+	&:nth-child(4n + 4)
+		margin-right: 0
+
+	&.common
+		background-color: #c8cad6
+		border-color: darken(#c8cad6, 20%)
+
+		.emote-title
+			background-color: rgba(darken(#c8cad6, 20%), 0.5)
+	
+	&.uncommon
+		background-color: #469b59
+		border-color: darken(#469b59, 20%)
+
+		.emote-title
+			background-color: rgba(darken(#469b59, 20%), 0.5)
+	
+	&.rare
+		background-color: #2777b2
+		border-color: darken(#2777b2, 20%)
+
+		.emote-title
+			background-color: rgba(darken(#2777b2, 20%), 0.5)
+	
+	&.epic
+		background-color: #833ca4
+		border-color: darken(#833ca4, 20%)
+
+		.emote-title
+			background-color: rgba(darken(#833ca4, 20%), 0.5)
+	
+	&.legendary
+		background-color: #de742c
+		border-color: darken(#de742c, 20%)
+
+		.emote-title
+			background-color: rgba(darken(#de742c, 20%), 0.5)
+	
+	.emote-price
+		padding: 1rem
+
+	img
+		position: absolute
+		width: 100%
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		padding: 15%
+	
+	.emote-title
+		position: absolute
+		bottom: 0
+		width: 100%
+		text-align: center
+		padding: 1rem
