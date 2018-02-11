@@ -26,4 +26,5 @@ Route::group(['middleware' => 'auth'], function()
     Route::post('/emotes/create', 'EmotesController@store')->name('emotes.store');
 
     Route::get('/emotes/{emote}/edit', 'EmotesController@edit')->name('emotes.edit');
+    Route::post('/emotes/{emote}', 'EmotesController@update')->name('emotes.update');
 });

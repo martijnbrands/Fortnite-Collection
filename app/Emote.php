@@ -19,8 +19,21 @@ class Emote extends Model
         'video'
     ];
 
-    public function getThumbnailAttribute($file)
+    public function getThumbAttribute()
     {
-        return "/images/emotes/" . $file;
+        return "/images/emotes/" . $this->thumbnail;
+    }
+
+    public static function getEnumValues($name)
+    {
+        $instance = new static; // create an instance of the model to be able to get the table name
+        $type = \DB::select( \DB::raw('SHOW COLUMNS FROM '. \DB::getTablePrefix() . $instance->getTable() .' WHERE Field = "' . $name . '"') )[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $type, $matches);
+        $enum = array();
+        foreach(explode(',', $matches[1]) as $value){
+            $v = trim( $value, "'" );
+            $enum[] = $v;
+        }
+        return $enum;
     }
 }
