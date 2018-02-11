@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container emote-grid">
+
     @forelse($emotes as $emote)
         <div class="single-emote {{ $emote->rarity }}">
             @can ('update', $emote)
@@ -13,7 +14,7 @@
             <div class="emote-price">
                 {{ $emote->vbucks }}
             </div>
-
+            
             <img src="{{ $emote->thumbnail }}" alt="$emote->title"/>
             
             <div class="emote-title">
@@ -23,5 +24,6 @@
     @empty
         There are currently no emotes to show.
     @endforelse
+    
 </div>
 @endsection

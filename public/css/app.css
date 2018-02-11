@@ -1,4 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@font-face {
+  font-family: 'BurbankBigCondensed-Black';
+  src: url("/fonts/BurbankBigCondensed-Black.eot") format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*!
  * Bootstrap v4.0.0 (https://getbootstrap.com)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
@@ -9994,88 +10001,73 @@ a.text-dark:focus {
   }
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.emote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 0 auto;
+  max-width: 1024px;
 }
 
-.single-emote {
-  width: 23.5%;
-  margin-right: 2%;
-  margin-bottom: 2%;
-  float: left;
-  height: 250px;
-  border: 1px solid transparent;
+.emote-grid .single-emote {
   position: relative;
+  width: 100%;
+  height: 305px;
+  border: 4px solid;
 }
 
-.single-emote:nth-child(4n + 4) {
-  margin-right: 0;
-}
-
-.single-emote.common {
+.emote-grid .single-emote.common {
   background-color: #c8cad6;
-  border-color: #8e92aa;
+  border-color: white;
 }
 
-.single-emote.common .emote-title {
-  background-color: rgba(142, 146, 170, 0.5);
+.emote-grid .single-emote.uncommon {
+  background-color: #8CCC4E;
+  background-image: radial-gradient(circle, #8CCC4E, #40641d);
+  border-color: #bfe39d;
 }
 
-.single-emote.uncommon {
-  background-color: #469b59;
-  border-color: #265531;
+.emote-grid .single-emote.rare {
+  background-color: #66D2F9;
+  background-image: radial-gradient(circle, #66D2F9, #078ebf);
+  border-color: #c8effd;
 }
 
-.single-emote.uncommon .emote-title {
-  background-color: rgba(38, 85, 49, 0.5);
+.emote-grid .single-emote.epic {
+  background-color: #C862F6;
+  background-image: radial-gradient(circle, #C862F6, #800ab5);
+  border-color: #eac2fc;
 }
 
-.single-emote.rare {
-  background-color: #2777b2;
-  border-color: #153f5e;
+.emote-grid .single-emote.legendary {
+  background-color: #E59B5E;
+  background-image: radial-gradient(circle, #E59B5E, #924f18);
+  border-color: #f3d2b6;
 }
 
-.single-emote.rare .emote-title {
-  background-color: rgba(21, 63, 94, 0.5);
+.emote-grid .emote-price {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
 }
 
-.single-emote.epic {
-  background-color: #833ca4;
-  border-color: #472159;
-}
-
-.single-emote.epic .emote-title {
-  background-color: rgba(71, 33, 89, 0.5);
-}
-
-.single-emote.legendary {
-  background-color: #de742c;
-  border-color: #8e4716;
-}
-
-.single-emote.legendary .emote-title {
-  background-color: rgba(142, 71, 22, 0.5);
-}
-
-.single-emote .edit {
-  display: block;
+.emote-grid .edit {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #ffffff;
+  display: block;
+  background-color: #fff;
   padding: 4px 8px;
   font-size: 12px;
-  border-radius: 4px;
-  z-index: 5;
 }
 
-.single-emote .emote-price {
-  padding: 1rem;
+.emote-grid .edit a {
+  color: #000;
 }
 
-.single-emote img {
+.emote-grid img {
   position: absolute;
   width: 100%;
   top: 50%;
@@ -10085,11 +10077,21 @@ a.text-dark:focus {
   padding: 15%;
 }
 
-.single-emote .emote-title {
+.emote-grid .emote-title {
+  font-family: "BurbankBigCondensed-Black";
+  color: #fff;
+  font-size: 32px;
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   bottom: 0;
   width: 100%;
   text-align: center;
   padding: 1rem;
+}
+
+.navbar-laravel {
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
