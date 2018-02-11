@@ -16,7 +16,7 @@ class EmotesController extends Controller
      */
     public function index()
     {
-        $emotes = Emote::all();
+        $emotes = Emote::orderBy('created_at' , 'DESC')->get();
         return view('emotes.index', compact('emotes'));
     }
 
@@ -52,9 +52,8 @@ class EmotesController extends Controller
 
             $thumbnail = $request->file('thumbnail');
                     
-            $fileName = str_slug($request->name) . '.' . $thumbnail->getClientOriginalExtension();
+            $fileName = str_slug($request->title) . '.' . $thumbnail->getClientOriginalExtension();
             Image::make($thumbnail)->save(public_path('images/emotes/' . $fileName));
-
         }
 
         Emote::create([
@@ -64,8 +63,6 @@ class EmotesController extends Controller
             'thumbnail' => $fileName,
             'video' => request('video'),
         ]);
-
-
 
         return redirect('/emotes');
     }
