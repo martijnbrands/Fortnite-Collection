@@ -24,12 +24,9 @@
             <div class="emote-price">
                 {{ $emote->vbucks }}
             </div>
-            
-            <img src="{{ $emote->thumbnail }}" alt="$emote->title"/>
 
             <img src="{{ $emote->thumb }}" alt="{{ $emote->title }}"/>
 
-            
             <div class="emote-title">
                 {{ $emote->title }}
             </div>
