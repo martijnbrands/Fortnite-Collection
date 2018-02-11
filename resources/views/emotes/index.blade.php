@@ -16,7 +16,7 @@
     @forelse($emotes as $emote)
         <div class="single-emote {{ $emote->rarity }}">
             @can ('update', $emote)
-                <div class="edit">
+                <div class="emote-edit">
                     <a href="{{ route('emotes.edit', $emote->id)}}">Edit</a>
                 </div>
             @endcan

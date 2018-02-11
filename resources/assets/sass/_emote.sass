@@ -1,40 +1,49 @@
 .emote-grid
 	display: grid
-	grid-template-columns: 1fr 1fr 1fr
+	grid-template-columns: 1fr 1fr 1fr 1fr
 	grid-column-gap: 10px
 	grid-row-gap: 10px
 	margin: 0 auto
-	max-width: 1024px
 	.single-emote
 		position: relative
 		width: 100%
 		height: 305px
-
 		border: 4px solid
 
 		&.common
 			background-color: $common-color
-			border-color: lighten($common-color, 20%)
+			background-image: radial-gradient( circle, $common-color, darken($common-color, 30%))
+			border-color: lighten($common-color, 10%)
+			.emote-title
+				background-color: rgba(darken($common-color, 10%), 0.5)
 		
 		&.uncommon
 			background-color: $uncommon-color
 			background-image: radial-gradient( circle, $uncommon-color, darken($uncommon-color, 30%))
-			border-color: lighten($uncommon-color, 20%)
+			border-color: lighten($uncommon-color, 10%)
+			.emote-title
+				background-color: rgba(darken($uncommon-color, 10%), 0.5)
 		
 		&.rare
 			background-color: $rare-color
 			background-image: radial-gradient( circle, $rare-color, darken($rare-color, 30%))
-			border-color: lighten($rare-color, 20%)
+			border-color: lighten($rare-color, 10%)
+			.emote-title
+				background-color: rgba(darken($rare-color, 10%), 0.5)
 		
 		&.epic
 			background-color: $epic-color
 			background-image: radial-gradient( circle, $epic-color, darken($epic-color, 30%))
-			border-color: lighten($epic-color, 20%)
+			border-color: lighten($epic-color, 10%)
+			.emote-title
+				background-color: rgba(darken($epic-color, 10%), 0.5)
 		
 		&.legendary
 			background-color: $legandary-color
 			background-image: radial-gradient( circle, $legandary-color, darken($legandary-color, 30%))
-			border-color: lighten($legandary-color, 20%)
+			border-color: lighten($legandary-color, 10%)
+			.emote-title
+				background-color: rgba(darken($legandary-color, 10%), 0.5)
 
 	.emote-price
 		position: absolute
@@ -42,8 +51,7 @@
 		left: 10px
 		color: #fff
 
-	
-	.edit
+	.emote-edit
 		position: absolute
 		top: 10px
 		right: 10px
@@ -51,6 +59,7 @@
 		background-color: #fff
 		padding: 4px 8px
 		font-size: 12px 
+		z-index: 5
 		a
 			color: #000
 
@@ -60,16 +69,16 @@
 		top: 50%
 		left: 50%
 		transform: translate(-50%, -50%)
-		padding: 15%
+		padding: 5%
 
 	.emote-title
-		font-family: $title-font
-		color: #fff
-		font-size: 32px
-		background-color: rgba(0,0,0,0.5)
-
 		position: absolute
 		bottom: 0
 		width: 100%
+		padding: 0.5rem
+		color: #fff
 		text-align: center
-		padding: 1rem
+		text-transform: uppercase
+		font-family: $title-font
+		font-size: 24px
+		
