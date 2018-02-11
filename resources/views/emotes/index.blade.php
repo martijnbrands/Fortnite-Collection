@@ -4,6 +4,12 @@
 <div class="container">
     @forelse($emotes as $emote)
         <div class="single-emote {{ $emote->rarity }}">
+            @can ('update', $emote)
+                <div class="edit">
+                    <a href="{{ route('emotes.edit', $emote->id)}}">Edit</a>
+                </div>
+            @endcan
+            
             <div class="emote-price">
                 {{ $emote->vbucks }}
             </div>

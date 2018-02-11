@@ -10059,6 +10059,18 @@ a.text-dark:focus {
   background-color: rgba(142, 71, 22, 0.5);
 }
 
+.single-emote .edit {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  z-index: 5;
+}
+
 .single-emote .emote-price {
   padding: 1rem;
 }
