@@ -25,7 +25,9 @@ class EmotesController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Emote::class);
+
+        return view('emotes.create');
     }
 
     /**
@@ -58,7 +60,9 @@ class EmotesController extends Controller
      */
     public function edit(Emote $emote)
     {
-        //
+        $this->authorize('update', $emote);
+
+        return view('emotes.edit', compact('emote'));
     }
 
     /**
