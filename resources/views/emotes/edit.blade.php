@@ -4,8 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="{{ route('emotes.update', $emote->id) }}">
-                @method ('post')
+            <form action="{{ route('emotes.update', $emote->id) }}" method="POST">
                 @csrf()
 
                 <div class="form-group">

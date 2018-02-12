@@ -49,8 +49,19 @@
 	.emote-price
 		position: absolute
 		top: 10px
-		left: 10px
+		left: 40px
 		color: #fff
+		&:before
+			content: ""
+			position: absolute
+			left: -30px
+			width: 25px
+			height: 25px
+			margin-right: 25px
+			background-image: url("/images/vbucks_icon.png")
+			background-size: cover
+
+
 
 	.emote-edit
 		position: absolute
@@ -84,5 +95,4 @@
 		font-family: $title-font
 		font-size: 24px
 		font-weight: 600
-		letter-spacing: 1px
 		

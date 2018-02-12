@@ -10064,6 +10064,13 @@ a.text-dark:focus {
   }
 }
 
+.btn-primary {
+  border-radius: 0;
+  border: 0;
+  color: #000;
+  background-color: #f0ed63;
+}
+
 .emote-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -10132,8 +10139,19 @@ a.text-dark:focus {
 .emote-grid .emote-price {
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 40px;
   color: #fff;
+}
+
+.emote-grid .emote-price:before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  width: 25px;
+  height: 25px;
+  margin-right: 25px;
+  background-image: url("/images/vbucks_icon.png");
+  background-size: cover;
 }
 
 .emote-grid .emote-edit {
@@ -10173,7 +10191,6 @@ a.text-dark:focus {
   font-family: "BurbankBig";
   font-size: 24px;
   font-weight: 600;
-  letter-spacing: 1px;
 }
 
 .navbar-laravel {
