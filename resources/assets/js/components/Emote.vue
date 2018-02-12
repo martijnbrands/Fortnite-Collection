@@ -1,19 +1,18 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Emote Component</div>
+    <div class="container emote-grid">
+        <div class="single-emote" v-for="emote in emotes">
+            
+            <div class="emote-price">
+                {{ emote.vbucks }}
+            </div>
 
-                    <div class="card-body">
-                        <div class="emote" v-for="emote in emotes">
-                            <h1>{{ emote.title }}</h1>
-                        </div>
-                    </div>
-                </div>
+            <!-- <img src="{{ emote.thumb }}" alt="{{ emote->title }}"/> -->
+
+            <div class="emote-title">
+                {{ emote.title }}
             </div>
         </div>
-    </div>
+</div>
 </template>
 
 <script>
@@ -28,7 +27,7 @@
         },
         methods:{
             fetchEmote(){
-                this.$http.get("emotes").then(response => {this.customer = response.data.emotes})
+                this.$http.get("emotes").then(response => {this.emotes = response.data.emotes})
             }
         },
         mounted() {

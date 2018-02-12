@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+{{-- 
 @auth
     <div class="container">
         <div class="page-actions clearfix mb-3 text-right">
@@ -34,6 +34,6 @@
     @empty
         There are currently no emotes to show.
     @endforelse
-</div>
-<emote></emote>
+</div> --}}
+    <emote></emote>
 @endsection
