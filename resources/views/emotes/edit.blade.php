@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="{{ route('emotes.update', $emote->id) }}" method="POST">
+            <form action="{{ route('emotes.update', $emote->id) }}" method="PATCH" enctype="multipart/form-data">
                 @csrf()
 
                 <div class="form-group">
@@ -47,7 +47,7 @@
 
                 <div class="form-group">
                     <label for="thumbnail">Thumbnail</label>
-                    <input readonly id="thumbnail" class="form-control" name="thumbnail" type="text" value="{{ $emote->thumbnail }}"/>
+                    <input id="thumbnail" class="form-control" name="thumbnail" type="file" value="{{ $emote->thumbnail }}"/>
 
                     @if ($errors->has('thumbnail'))
                         <span class="invalid-feedback">
@@ -58,7 +58,7 @@
 
                 <div class="form-group">
                     <label for="title">Video</label>
-                    <input readonly id="video" class="form-control" name="video" type="text" value="{{ $emote->video }}"/>
+                    <input id="video" class="form-control" name="video" type="text" value="{{ $emote->video }}"/>
 
                     @if ($errors->has('video'))
                         <span class="invalid-feedback">
@@ -67,9 +67,8 @@
                     @endif
                 </div>
 
-                <label>TODO: file upload</label>
                 <div class="form-group">
-                    <input disabled type="submit" class="btn btn-primary" value="Save"/>
+                    <input type="submit" class="btn btn-primary" value="Save"/>
                 </div>
 
             </form>

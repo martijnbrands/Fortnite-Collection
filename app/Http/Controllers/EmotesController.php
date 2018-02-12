@@ -18,6 +18,8 @@ class EmotesController extends Controller
     {
         $emotes = Emote::orderBy('created_at' , 'DESC')->get();
         return view('emotes.index', compact('emotes'));
+        $emotes = Emote::all();
+        return response()->json(['emotes'=>$emotes]);
     }
 
     /**

@@ -35,4 +35,5 @@
         There are currently no emotes to show.
     @endforelse
 </div>
+<emote></emote>
 @endsection

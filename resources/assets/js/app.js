@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+Vue.use(require('vue-resource'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,7 +17,13 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('emote-component', require('./components/EmoteComponent.vue'));
+
+Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
+
+import emote from './components/Emote.vue';
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components : { emote }
 });
