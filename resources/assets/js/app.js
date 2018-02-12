@@ -25,5 +25,6 @@ import emote from './components/Emote.vue';
 
 const app = new Vue({
     el: '#app',
-    components : { emote }
+    components : { emote },
+    
 });

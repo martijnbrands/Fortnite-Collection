@@ -1,12 +1,12 @@
 <template>
     <div class="container emote-grid">
-        <div class="single-emote" v-for="emote in emotes">
+        <div class="single-emote" v-for="emote in emotes" v-bind:class="emote.rarity">
             
             <div class="emote-price">
                 {{ emote.vbucks }}
             </div>
 
-            <!-- <img src="{{ emote.thumb }}" alt="{{ emote->title }}"/> -->
+            <img v-bind:src="'images/emotes/' + emote.thumbnail"/>
 
             <div class="emote-title">
                 {{ emote.title }}

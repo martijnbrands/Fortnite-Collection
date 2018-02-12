@@ -13928,6 +13928,7 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('con
 var app = new Vue({
   el: '#app',
   components: { emote: __WEBPACK_IMPORTED_MODULE_0__components_Emote_vue___default.a }
+
 });
 
 /***/ }),
@@ -48800,10 +48801,12 @@ var render = function() {
     "div",
     { staticClass: "container emote-grid" },
     _vm._l(_vm.emotes, function(emote) {
-      return _c("div", { staticClass: "single-emote" }, [
+      return _c("div", { staticClass: "single-emote", class: emote.rarity }, [
         _c("div", { staticClass: "emote-price" }, [
           _vm._v("\n                " + _vm._s(emote.vbucks) + "\n            ")
         ]),
+        _vm._v(" "),
+        _c("img", { attrs: { src: "images/emotes/" + emote.thumbnail } }),
         _vm._v(" "),
         _c("div", { staticClass: "emote-title" }, [
           _vm._v("\n                " + _vm._s(emote.title) + "\n            ")
