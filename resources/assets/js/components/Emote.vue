@@ -40,7 +40,7 @@
         computed:{
             filteredEmotes: function() {
                 return this.emotes.filter((emote) => {
-                    return emote.title.match(this.search);
+                    return emote.title.toLowerCase().match(this.search.toLowerCase());
                 });
             }
         },

@@ -48795,7 +48795,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             return this.emotes.filter(function (emote) {
-                return emote.title.match(_this2.search);
+                return emote.title.toLowerCase().match(_this2.search.toLowerCase());
             });
         }
     },
