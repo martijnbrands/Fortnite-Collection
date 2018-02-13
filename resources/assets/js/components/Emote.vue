@@ -1,6 +1,10 @@
-<template>
+<template>    
+
     <div class="container emote-grid">
-        <div class="single-emote" v-for="emote in emotes" v-bind:class="emote.rarity">
+        <div class="container">
+            <input type="text" v-model="search" placeholder="Search Emotes"></input>
+        </div>
+        <div class="single-emote" v-for="emote in filteredEmotes" v-bind:class="emote.rarity">
             
             <div class="emote-price">
                 {{ emote.vbucks }}
@@ -11,8 +15,10 @@
             <div class="emote-title">
                 {{ emote.title }}
             </div>
+            
         </div>
-</div>
+    </div>
+
 </template>
 
 <script>
@@ -20,6 +26,7 @@
         data (){
             return {
                 emotes: [],
+                search: ''
             }
         },
         created (){
@@ -28,6 +35,13 @@
         methods:{
             fetchEmote(){
                 this.$http.get("emotes").then(response => {this.emotes = response.data.emotes})
+            }
+        },
+        computed:{
+            filteredEmotes: function() {
+                return this.emotes.filter((emote) => {
+                    return emote.title.match(this.search);
+                });
             }
         },
         mounted() {

@@ -17,14 +17,13 @@ Vue.use(require('vue-resource'));
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-// Vue.component('emote-component', require('./components/EmoteComponent.vue'));
-
-Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
 
 import emote from './components/Emote.vue';
 
 const app = new Vue({
     el: '#app',
-    components : { emote },
-    
+    components : { 
+    	emote
+    },
+ 
 });

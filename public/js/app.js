@@ -13919,15 +13919,14 @@ Vue.use(__webpack_require__(40));
  */
 
 Vue.component('example-component', __webpack_require__(42));
-// Vue.component('emote-component', require('./components/EmoteComponent.vue'));
-
-Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
 
 
 
 var app = new Vue({
   el: '#app',
-  components: { emote: __WEBPACK_IMPORTED_MODULE_0__components_Emote_vue___default.a }
+  components: {
+    emote: __WEBPACK_IMPORTED_MODULE_0__components_Emote_vue___default.a
+  }
 
 });
 
@@ -48764,11 +48763,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            emotes: []
+            emotes: [],
+            search: ''
         };
     },
     created: function created() {
@@ -48781,6 +48787,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.$http.get("emotes").then(function (response) {
                 _this.emotes = response.data.emotes;
+            });
+        }
+    },
+    computed: {
+        filteredEmotes: function filteredEmotes() {
+            var _this2 = this;
+
+            return this.emotes.filter(function (emote) {
+                return emote.title.match(_this2.search);
             });
         }
     },
@@ -48800,19 +48815,45 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "container emote-grid" },
-    _vm._l(_vm.emotes, function(emote) {
-      return _c("div", { staticClass: "single-emote", class: emote.rarity }, [
-        _c("div", { staticClass: "emote-price" }, [
-          _vm._v("\n                " + _vm._s(emote.vbucks) + "\n            ")
-        ]),
-        _vm._v(" "),
-        _c("img", { attrs: { src: "images/emotes/" + emote.thumbnail } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "emote-title" }, [
-          _vm._v("\n                " + _vm._s(emote.title) + "\n            ")
+    [
+      _c("div", { staticClass: "container" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.search,
+              expression: "search"
+            }
+          ],
+          attrs: { type: "text", placeholder: "Search Emotes" },
+          domProps: { value: _vm.search },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.search = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.filteredEmotes, function(emote) {
+        return _c("div", { staticClass: "single-emote", class: emote.rarity }, [
+          _c("div", { staticClass: "emote-price" }, [
+            _vm._v("\n            " + _vm._s(emote.vbucks) + "\n        ")
+          ]),
+          _vm._v(" "),
+          _c("img", { attrs: { src: "images/emotes/" + emote.thumbnail } }),
+          _vm._v(" "),
+          _c("div", { staticClass: "emote-title" }, [
+            _vm._v("\n            " + _vm._s(emote.title) + "\n        ")
+          ])
         ])
-      ])
-    })
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
