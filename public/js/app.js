@@ -51424,7 +51424,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchEmote: function fetchEmote() {
             var _this = this;
 
-            this.$http.get("emotes/fetch").then(function (response) {
+            this.$http.get("/emotes/fetch").then(function (response) {
                 _this.emotes = response.data.emotes;
             });
         }
@@ -51487,7 +51487,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("img", { attrs: { src: "images/emotes/" + emote.thumbnail } }),
+          _c("img", { attrs: { src: "/images/emotes/" + emote.thumbnail } }),
           _vm._v(" "),
           _c("div", { staticClass: "emote-title" }, [
             _vm._v(

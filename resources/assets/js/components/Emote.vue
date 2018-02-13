@@ -15,7 +15,7 @@
                     {{ emote.vbucks }}
                 </div>
 
-                <img v-bind:src="'images/emotes/' + emote.thumbnail"/>
+                <img v-bind:src="'/images/emotes/' + emote.thumbnail"/>
 
                 <div class="emote-title">
                     {{ emote.title }}
@@ -41,7 +41,7 @@
         },
         methods:{
             fetchEmote(){
-                this.$http.get("emotes/fetch").then(response => {this.emotes = response.data.emotes})
+                this.$http.get("/emotes/fetch").then(response => {this.emotes = response.data.emotes})
             }
         },
         computed:{
