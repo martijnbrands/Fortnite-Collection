@@ -1,8 +1,8 @@
 <template>
-    <div class="single-emote" v-bind:class="emote.rarity" @click="show()">
+    <div class="single-emote" v-bind:class="emote.rarity" @click="showDetails = !showDetails">
 
-        <div class="emote-detail" v-if="showDetails" @close="showDetails = false">
-            <button class="close" @click="$emit('close')">X</button>
+        <div class="emote-detail" v-if="showDetails">
+            <button class="close-btn" @click="close()">X</button>
             <div class="content">popup</div>
         </div>
         
@@ -71,7 +71,7 @@
             },
 
             close(){
-                this.showDetails = false;
+                this.showDetails = true;
                 console.log("Hide popup");
             }
         }

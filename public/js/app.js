@@ -51457,7 +51457,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.showDetails = true;
         },
         close: function close() {
-            this.showDetails = false;
+            this.showDetails = true;
             console.log("Hide popup");
         }
     }
@@ -51478,39 +51478,28 @@ var render = function() {
       class: _vm.emote.rarity,
       on: {
         click: function($event) {
-          _vm.show()
+          _vm.showDetails = !_vm.showDetails
         }
       }
     },
     [
       _vm.showDetails
-        ? _c(
-            "div",
-            {
-              staticClass: "emote-detail",
-              on: {
-                close: function($event) {
-                  _vm.showDetails = false
-                }
-              }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  on: {
-                    click: function($event) {
-                      _vm.$emit("close")
-                    }
+        ? _c("div", { staticClass: "emote-detail" }, [
+            _c(
+              "button",
+              {
+                staticClass: "close-btn",
+                on: {
+                  click: function($event) {
+                    _vm.close()
                   }
-                },
-                [_vm._v("X")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "content" }, [_vm._v("popup")])
-            ]
-          )
+                }
+              },
+              [_vm._v("X")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "content" }, [_vm._v("popup")])
+          ])
         : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "emote-price" }, [
