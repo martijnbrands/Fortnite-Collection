@@ -1,23 +1,30 @@
-<template>    
+<template>  
 
-    <div class="container emote-grid">
-        <div class="container">
-            <input type="text" v-model="search" placeholder="Search Emotes"></input>
+    <section>
+
+        <div class="form-group">
+            <input type="text" v-model="search" class="form-control" placeholder="Search Emotes">
         </div>
-        <div class="single-emote" v-for="emote in filteredEmotes" v-bind:class="emote.rarity">
-            
-            <div class="emote-price">
-                {{ emote.vbucks }}
-            </div>
 
-            <img v-bind:src="'images/emotes/' + emote.thumbnail"/>
 
-            <div class="emote-title">
-                {{ emote.title }}
+        <div class="emote-grid">
+
+            <div class="single-emote" v-for="emote in filteredEmotes" v-bind:class="emote.rarity">
+                
+                <div class="emote-price">
+                    {{ emote.vbucks }}
+                </div>
+
+                <img v-bind:src="'images/emotes/' + emote.thumbnail"/>
+
+                <div class="emote-title">
+                    {{ emote.title }}
+                </div>
+                
             </div>
-            
         </div>
-    </div>
+
+    </section> 
 
 </template>
 
@@ -34,7 +41,7 @@
         },
         methods:{
             fetchEmote(){
-                this.$http.get("emotes").then(response => {this.emotes = response.data.emotes})
+                this.$http.get("emotes/fetch").then(response => {this.emotes = response.data.emotes})
             }
         },
         computed:{

@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/emotes', 'EmotesController@index')->name('emotes');
+Route::get('/emotes/fetch', 'EmotesController@fetch')->name('emotes');
 
 Route::group(['middleware' => 'auth'], function()
 {

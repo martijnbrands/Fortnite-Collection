@@ -16,10 +16,8 @@ class EmotesController extends Controller
      */
     public function index()
     {
-        // $emotes = Emote::orderBy('created_at' , 'DESC')->get();
-        // return view('emotes.index', compact('emotes'));
-        $emotes = Emote::all();
-        return response()->json(['emotes'=>$emotes]);
+        $emotes = Emote::orderBy('created_at' , 'DESC')->get();
+        return view('emotes.index', compact('emotes'));
     }
 
     /**
@@ -115,4 +113,10 @@ class EmotesController extends Controller
     {
         //
     }
+    public function fetch()
+    {
+        $emotes = Emote::all();
+        return response()->json(['emotes'=>$emotes]);
+    }
+    
 }

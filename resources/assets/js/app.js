@@ -9,6 +9,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 Vue.use(require('vue-resource'));
+Vue.use(require('vue-router'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -19,6 +20,7 @@ Vue.use(require('vue-resource'));
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 import emote from './components/Emote.vue';
+
 
 const app = new Vue({
     el: '#app',
