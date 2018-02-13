@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <emote></emote>
+    <emotes></emotes>
 </div>
     
 @endsection

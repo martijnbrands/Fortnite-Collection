@@ -1,58 +1,79 @@
-<template>  
+<template>
+    <div class="single-emote" v-bind:class="emote.rarity" @click="show()">
 
-    <section>
-
-        <div class="form-group">
-            <input type="text" v-model="search" class="form-control" placeholder="Search Emotes">
+        <div class="emote-detail" v-if="showDetails" @close="showDetails = false">
+            <button class="close" @click="$emit('close')">X</button>
+            <div class="content">popup</div>
+        </div>
+        
+        <div class="emote-price">
+            {{ emote.vbucks }}
         </div>
 
+        <img v-bind:src="'/images/emotes/' + emote.thumbnail"/>
 
-        <div class="emote-grid">
-
-            <div class="single-emote" v-for="emote in filteredEmotes" v-bind:class="emote.rarity">
-                
-                <div class="emote-price">
-                    {{ emote.vbucks }}
-                </div>
-
-                <img v-bind:src="'images/emotes/' + emote.thumbnail"/>
-
-                <div class="emote-title">
-                    {{ emote.title }}
-                </div>
-                
-            </div>
+        <div class="emote-title">
+            {{ emote.title }}
         </div>
-
-    </section> 
-
+        
+    </div>
 </template>
+
+<style>
+    .emote-detail {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #f5f5f5;
+        z-index: 100;
+    }
+
+    .emote-detail .close {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        display: block;
+        padding: 0.5rem 1rem;
+        background-color: #333333;
+        color: #ffffff;
+        font-size: 14px;
+    }
+
+    .emote-detail span.content {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
 
 <script>
     export default {
-        data (){
+        props: {
+            'emote-data': {
+                required: true
+            }
+        },
+
+        data(){
             return {
-                emotes: [],
-                search: ''
+                'emote': this.emoteData,
+                'showDetails': false
             }
         },
-        created (){
-            this.fetchEmote();
-        },
-        methods:{
-            fetchEmote(){
-                this.$http.get("emotes/fetch").then(response => {this.emotes = response.data.emotes})
+
+        methods: {
+            show(){
+                this.showDetails = true;
+            },
+
+            close(){
+                this.showDetails = false;
+                console.log("Hide popup");
             }
-        },
-        computed:{
-            filteredEmotes: function() {
-                return this.emotes.filter((emote) => {
-                    return emote.title.toLowerCase().match(this.search.toLowerCase());
-                });
-            }
-        },
-        mounted() {
-            console.log('Component mounted.')
         }
     }
 </script>
