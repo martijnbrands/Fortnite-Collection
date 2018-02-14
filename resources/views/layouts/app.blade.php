@@ -61,7 +61,9 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <router-view></router-view>
+            </div>
         </main>
     </div>
 

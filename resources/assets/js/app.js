@@ -7,7 +7,10 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+window.Vue = Vue;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -17,18 +20,26 @@ window.Vue = require('vue');
 
 import emotes from './components/Emotes.vue';
 import emote from './components/Emote.vue';
-import VueRouter from 'vue-router';
+import detail from './components/Detail.vue';
 
 Vue.use(require('vue-resource'));
-Vue.use(require('vue-router'));
-
 Vue.use(VueRouter)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('emotes', require('./components/Emotes.vue'));
 Vue.component('emote', require('./components/Emote.vue'));
+Vue.component('detail', require('./components/Detail.vue'));
 
-const app = new Vue({
-    el: '#app',
-    router: router
+
+window.router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {path: '/emotes', component: emotes},
+        {path: '/emotes/:id', component: detail}
+    ]
+});
+
+window.page = new Vue({
+    router: window.router,
+    el: '#app'
 });

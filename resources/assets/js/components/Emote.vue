@@ -29,7 +29,7 @@
             <img v-bind:src="'/images/emotes/' + emote.thumbnail"/>
 
             <div class="emote-title">
-                {{ emote.title }}
+                <router-link v-bind:to="'/emotes/' + emote.id">{{ emote.title }}</router-link>
             </div>
             
         </div>
@@ -47,7 +47,7 @@
         data(){
             return {
                 'emote': this.emoteData,
-                'showDetails': false
+                'showDetails': false,
             }
         },
 
@@ -58,7 +58,6 @@
 
             hide(){
                 this.showDetails = false;
-                console.log("Hide popup");
             }
         }
     }

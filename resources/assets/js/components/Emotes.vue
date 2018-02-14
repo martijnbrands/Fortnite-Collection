@@ -10,8 +10,6 @@
             <emote v-for="emote in filteredEmotes" v-bind:key="emote.id" :emote-data="emote"></emote>
         </div>
 
-        <router-view></router-view>
-
     </section> 
 
 </template>
@@ -30,7 +28,7 @@
         },
 
         methods:{
-
+            
             fetchEmotes(){
                 this.$http.get("/emotes/fetch")
                     .then(response => {this.emotes = response.data.emotes})

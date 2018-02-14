@@ -13898,11 +13898,15 @@ module.exports = __webpack_require__(48);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Emotes_vue__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Emotes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Emotes_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Emote_vue__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Emote_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Emote_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Emotes_vue__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Emotes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Emotes_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Emote_vue__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Emote_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Emote_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Detail_vue__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Detail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_Detail_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13912,7 +13916,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __webpack_require__(14);
 
-window.Vue = __webpack_require__(37);
+
+
+
+window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -13924,18 +13931,22 @@ window.Vue = __webpack_require__(37);
 
 
 
-Vue.use(__webpack_require__(40));
-Vue.use(__webpack_require__(53));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__webpack_require__(40));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["default"]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example-component', __webpack_require__(42));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('emotes', __webpack_require__(54));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('emote', __webpack_require__(45));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('detail', __webpack_require__(62));
 
-Vue.component('example-component', __webpack_require__(42));
-Vue.component('emotes', __webpack_require__(54));
-Vue.component('emote', __webpack_require__(45));
+window.router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
+    mode: 'history',
+    routes: [{ path: '/emotes', component: __WEBPACK_IMPORTED_MODULE_2__components_Emotes_vue___default.a }, { path: '/emotes/:id', component: __WEBPACK_IMPORTED_MODULE_4__components_Detail_vue___default.a }]
+});
 
-var app = new Vue({
-  el: '#app',
-  router: router
+window.page = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+    router: window.router,
+    el: '#app'
 });
 
 /***/ }),
@@ -48814,7 +48825,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         hide: function hide() {
             this.showDetails = false;
-            console.log("Hide popup");
         }
     }
 });
@@ -48881,9 +48891,16 @@ var render = function() {
         _vm._v(" "),
         _c("img", { attrs: { src: "/images/emotes/" + _vm.emote.thumbnail } }),
         _vm._v(" "),
-        _c("div", { staticClass: "emote-title" }, [
-          _vm._v("\n            " + _vm._s(_vm.emote.title) + "\n        ")
-        ])
+        _c(
+          "div",
+          { staticClass: "emote-title" },
+          [
+            _c("router-link", { attrs: { to: "/emotes/" + _vm.emote.id } }, [
+              _vm._v(_vm._s(_vm.emote.title))
+            ])
+          ],
+          1
+        )
       ]
     )
   ])
@@ -48913,7 +48930,6 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /**
   * vue-router v3.0.1
   * (c) 2017 Evan You
@@ -51536,7 +51552,7 @@ if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (VueRouter);
+/* harmony default export */ __webpack_exports__["a"] = (VueRouter);
 
 
 /***/ }),
@@ -51608,8 +51624,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -51652,45 +51666,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    [
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.search,
-              expression: "search"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Search Emotes" },
-          domProps: { value: _vm.search },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.search = $event.target.value
-            }
+  return _c("section", [
+    _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.search,
+            expression: "search"
           }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "emote-grid" },
-        _vm._l(_vm.filteredEmotes, function(emote) {
-          return _c("emote", { key: emote.id, attrs: { "emote-data": emote } })
-        })
-      ),
-      _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "Search Emotes" },
+        domProps: { value: _vm.search },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.search = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "emote-grid" },
+      _vm._l(_vm.filteredEmotes, function(emote) {
+        return _c("emote", { key: emote.id, attrs: { "emote-data": emote } })
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -51699,6 +51707,165 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-41c8651c", module.exports)
+  }
+}
+
+/***/ }),
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(63)
+/* template */
+var __vue_template__ = __webpack_require__(64)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Detail.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-696f1cc8", Component.options)
+  } else {
+    hotAPI.reload("data-v-696f1cc8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            emote: [],
+            id: this.$route.params.id
+        };
+    },
+    created: function created() {
+        this.fetchEmote();
+    },
+
+
+    methods: {
+        fetchEmote: function fetchEmote() {
+            var _this = this;
+
+            this.$http.get("/emotes/" + this.id).then(function (response) {
+                _this.emote = response.data.emote;
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", [
+    _c("div", { staticClass: "emote-detail", class: _vm.emote.rarity }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row align-items-center" }, [
+          _c("div", { staticClass: "col" }, [
+            _c("h1", [_vm._v(_vm._s(_vm.emote.title))]),
+            _vm._v(" "),
+            _c("div", { staticClass: "emote-price" }, [
+              _vm._v(_vm._s(_vm.emote.vbucks))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col" }, [
+            _c("img", {
+              attrs: { src: "/images/emotes/" + _vm.emote.thumbnail }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "close-btn" }, [
+      _c("i", { staticClass: "fa fa-times" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-696f1cc8", module.exports)
   }
 }
 

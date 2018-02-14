@@ -75,7 +75,7 @@ class EmotesController extends Controller
      */
     public function show(Emote $emote)
     {
-        //
+        return response()->json(['emote'=>$emote]);
     }
 
     /**
