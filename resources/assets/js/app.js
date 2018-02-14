@@ -15,16 +15,30 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import emotes from './components/Emotes.vue';
+import emote from './components/Emote.vue';
+import VueRouter from 'vue-router';
+
 Vue.use(require('vue-resource'));
 Vue.use(require('vue-router'));
 
-import emotes from './components/Emotes.vue';
-import emote from './components/Emote.vue';
+Vue.use(VueRouter)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('emotes', require('./components/Emotes.vue'));
 Vue.component('emote', require('./components/Emote.vue'));
+// Vue.component('singleEmote', require('./components/singleEmote.vue'));
+
+const router = new VueRouter({
+  routes: [
+    {path: '/emotes', component: emotes}
+    // {path: '/emotes/:id', component: singleEmote} 
+  ]
+  // ,
+  // mode: 'history' // ALS JE DIT AAN ZET LAAT DIE DE COMPONENT 2X IN. ZET JE DIT AAN DAN HAALT DIE WEL DE # WEG IN DE URL
+})
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router: router
 });

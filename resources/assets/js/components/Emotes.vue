@@ -10,6 +10,8 @@
             <emote v-for="emote in filteredEmotes" v-bind:key="emote.id" :emote-data="emote"></emote>
         </div>
 
+        <router-view></router-view>
+
     </section> 
 
 </template>

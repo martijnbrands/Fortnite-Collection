@@ -1,10 +1,5 @@
 <template>
-    <div class="single-emote" v-bind:class="emote.rarity" @click="showDetails = !showDetails">
-
-        <div class="emote-detail" v-if="showDetails">
-            <button class="close-btn" @click="close()">X</button>
-            <div class="content">popup</div>
-        </div>
+    <div class="single-emote" v-bind:class="emote.rarity">
         
         <div class="emote-price">
             {{ emote.vbucks }}
@@ -13,42 +8,11 @@
         <img v-bind:src="'/images/emotes/' + emote.thumbnail"/>
 
         <div class="emote-title">
-            {{ emote.title }}
+            <router-link v-bind:to="'/emotes/' + emote.id">{{ emote.title }}</router-link>
         </div>
         
     </div>
 </template>
-
-<style>
-    .emote-detail {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: #f5f5f5;
-        z-index: 100;
-    }
-
-    .emote-detail .close {
-        position: absolute;
-        top: 50px;
-        right: 50px;
-        display: block;
-        padding: 0.5rem 1rem;
-        background-color: #333333;
-        color: #ffffff;
-        font-size: 14px;
-    }
-
-    .emote-detail span.content {
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-</style>
 
 <script>
     export default {
@@ -60,19 +24,7 @@
 
         data(){
             return {
-                'emote': this.emoteData,
-                'showDetails': false
-            }
-        },
-
-        methods: {
-            show(){
-                this.showDetails = true;
-            },
-
-            close(){
-                this.showDetails = true;
-                console.log("Hide popup");
+                'emote': this.emoteData
             }
         }
     }
