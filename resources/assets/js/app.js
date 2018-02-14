@@ -15,16 +15,20 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import emotes from './components/Emotes.vue';
+import emote from './components/Emote.vue';
+import VueRouter from 'vue-router';
+
 Vue.use(require('vue-resource'));
 Vue.use(require('vue-router'));
 
-import emotes from './components/Emotes.vue';
-import emote from './components/Emote.vue';
+Vue.use(VueRouter)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('emotes', require('./components/Emotes.vue'));
 Vue.component('emote', require('./components/Emote.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router: router
 });

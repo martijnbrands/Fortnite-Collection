@@ -13902,6 +13902,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Emotes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Emotes_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Emote_vue__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Emote_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Emote_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(53);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13919,18 +13920,22 @@ window.Vue = __webpack_require__(37);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+
+
+
 Vue.use(__webpack_require__(40));
 Vue.use(__webpack_require__(53));
 
-
-
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["default"]);
 
 Vue.component('example-component', __webpack_require__(42));
 Vue.component('emotes', __webpack_require__(54));
 Vue.component('emote', __webpack_require__(45));
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  router: router
 });
 
 /***/ }),
@@ -51603,6 +51608,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -51645,39 +51652,45 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [
-    _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.search,
-            expression: "search"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Search Emotes" },
-        domProps: { value: _vm.search },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+  return _c(
+    "section",
+    [
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.search,
+              expression: "search"
             }
-            _vm.search = $event.target.value
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Search Emotes" },
+          domProps: { value: _vm.search },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.search = $event.target.value
+            }
           }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "emote-grid" },
-      _vm._l(_vm.filteredEmotes, function(emote) {
-        return _c("emote", { key: emote.id, attrs: { "emote-data": emote } })
-      })
-    )
-  ])
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "emote-grid" },
+        _vm._l(_vm.filteredEmotes, function(emote) {
+          return _c("emote", { key: emote.id, attrs: { "emote-data": emote } })
+        })
+      ),
+      _vm._v(" "),
+      _c("router-view")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

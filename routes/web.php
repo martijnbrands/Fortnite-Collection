@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('popup');
+    return view('emotes.index');
 });
 
 Auth::routes();
@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/emotes', 'EmotesController@index')->name('emotes');
 Route::get('/emotes/fetch', 'EmotesController@fetch')->name('emotes.fetch');
+// Route::get('/emotes/{emote}', 'EmotesController@fetch')->name('emotes.fetch');
 
 Route::group(['middleware' => 'auth'], function()
 {
