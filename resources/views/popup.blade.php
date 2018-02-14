@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="single-emote-popup legendary">
+    <div class="emote-detail legendary">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col">

@@ -1,54 +1,40 @@
 <template>
-    <div class="single-emote" v-bind:class="emote.rarity" @click="showDetails = !showDetails">
+    
+    <div class="single-emote-wrapper">
 
-        <div class="emote-detail" v-if="showDetails">
-            <button class="close-btn" @click="close()">X</button>
-            <div class="content">popup</div>
-        </div>
-        
-        <div class="emote-price">
-            {{ emote.vbucks }}
+        <div class="emote-detail" v-bind:class="emote.rarity" v-if="showDetails">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1>{{ emote.title }}</h1>
+                        <div class="emote-price">{{ emote.vbucks }}</div>
+                    </div>
+                    <div class="col">
+                        <img v-bind:src="'/images/emotes/' + emote.thumbnail"/>
+                    </div>
+                </div>
+                
+                
+                <div class="close-btn" @click="hide()"><i class="fa fa-times"></i></div>
+            </div>
+            
         </div>
 
-        <img v-bind:src="'/images/emotes/' + emote.thumbnail"/>
+        <div class="single-emote" v-bind:class="emote.rarity" @click="show()">
+            
+            <div class="emote-price">
+                {{ emote.vbucks }}
+            </div>
 
-        <div class="emote-title">
-            {{ emote.title }}
+            <img v-bind:src="'/images/emotes/' + emote.thumbnail"/>
+
+            <div class="emote-title">
+                {{ emote.title }}
+            </div>
+            
         </div>
-        
     </div>
 </template>
-
-<style>
-    .emote-detail {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: #f5f5f5;
-        z-index: 100;
-    }
-
-    .emote-detail .close {
-        position: absolute;
-        top: 50px;
-        right: 50px;
-        display: block;
-        padding: 0.5rem 1rem;
-        background-color: #333333;
-        color: #ffffff;
-        font-size: 14px;
-    }
-
-    .emote-detail span.content {
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-</style>
 
 <script>
     export default {
@@ -70,8 +56,8 @@
                 this.showDetails = true;
             },
 
-            close(){
-                this.showDetails = true;
+            hide(){
+                this.showDetails = false;
                 console.log("Hide popup");
             }
         }

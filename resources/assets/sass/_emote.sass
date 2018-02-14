@@ -95,12 +95,14 @@
 		font-weight: 600
 
 
-.single-emote-popup
+.emote-detail
 	position: fixed
 	top: 0
-	left: 0
-	width: 100%
+	right: 0
+	width: 50%
 	height: 100vh
+	z-index: 1
+
 	.row
 		height: 100vh
 	&.common
@@ -133,9 +135,10 @@
 			height: 50px
 			background-image: url("/images/vbucks_icon.png")
 			background-size: cover
+	
 	.close-btn
 		position: absolute
-		top: 50px
-		right: 0
+		top: 24px
+		right: 24px
 		@extend %close-btn
 		

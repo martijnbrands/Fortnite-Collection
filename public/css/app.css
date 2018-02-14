@@ -10071,7 +10071,7 @@ a.text-dark:focus {
   background-color: #f0ed63;
 }
 
-.single-emote-popup .close-btn {
+.emote-detail .close-btn {
   font-size: 22px;
   width: 50px;
   height: 50px;
@@ -10208,39 +10208,40 @@ a.text-dark:focus {
   font-weight: 600;
 }
 
-.single-emote-popup {
+.emote-detail {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 50%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.emote-detail .row {
   height: 100vh;
 }
 
-.single-emote-popup .row {
-  height: 100vh;
-}
-
-.single-emote-popup.common {
+.emote-detail.common {
   background-color: #c9cad8;
 }
 
-.single-emote-popup.uncommon {
+.emote-detail.uncommon {
   background-color: #8CCC4E;
 }
 
-.single-emote-popup.rare {
+.emote-detail.rare {
   background-color: #1ac2fe;
 }
 
-.single-emote-popup.epic {
+.emote-detail.epic {
   background-color: #b83df2;
 }
 
-.single-emote-popup.legendary {
+.emote-detail.legendary {
   background-color: #eb9257;
 }
 
-.single-emote-popup h1 {
+.emote-detail h1 {
   color: #fff;
   text-transform: uppercase;
   font-family: "BurbankBig";
@@ -10248,14 +10249,14 @@ a.text-dark:focus {
   font-weight: 600;
 }
 
-.single-emote-popup .emote-price {
+.emote-detail .emote-price {
   position: relative;
   margin-left: 55px;
   font-size: 28px;
   color: #fff;
 }
 
-.single-emote-popup .emote-price:before {
+.emote-detail .emote-price:before {
   content: "";
   position: absolute;
   left: -55px;
@@ -10265,10 +10266,10 @@ a.text-dark:focus {
   background-size: cover;
 }
 
-.single-emote-popup .close-btn {
+.emote-detail .close-btn {
   position: absolute;
-  top: 50px;
-  right: 0;
+  top: 24px;
+  right: 24px;
 }
 
 .navbar-laravel {
