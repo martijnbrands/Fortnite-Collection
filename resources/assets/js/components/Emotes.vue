@@ -7,7 +7,7 @@
         </div>
 
         <div class="emote-grid">
-            <emote v-for="emote in filteredEmotes" v-bind:key="emote.id" :emote-data="emote"></emote>
+            <emote v-for="emote in filteredEmotes" v-bind:key="emote.id" :emote-data="emote" :active="checkActive(emote.id)" ></emote>
         </div>
 
     </section> 
@@ -16,10 +16,17 @@
 
 <script>
     export default {
+        props: {
+            activated: {
+                type: Number
+            }
+        },
+
         data (){
             return {
                 emotes: [],
-                search: ''
+                search: '',
+                id: this.$route.params.id
             }
         },
 
@@ -32,6 +39,10 @@
             fetchEmotes(){
                 this.$http.get("/emotes/fetch")
                     .then(response => {this.emotes = response.data.emotes})
+            },
+
+            checkActive(emoteId){
+                if(this.id == emoteId) return true;
             }
 
         },

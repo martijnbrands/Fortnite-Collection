@@ -20,7 +20,6 @@ window.Vue = Vue;
 
 import emotes from './components/Emotes.vue';
 import emote from './components/Emote.vue';
-import detail from './components/Detail.vue';
 
 Vue.use(require('vue-resource'));
 Vue.use(VueRouter)
@@ -28,14 +27,13 @@ Vue.use(VueRouter)
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('emotes', require('./components/Emotes.vue'));
 Vue.component('emote', require('./components/Emote.vue'));
-Vue.component('detail', require('./components/Detail.vue'));
 
 
 window.router = new VueRouter({
     mode: 'history',
     routes: [
         {path: '/emotes', component: emotes},
-        {path: '/emotes/:id', component: detail}
+        {path: '/emotes/:id', component: emotes}
     ]
 });
 
