@@ -14,7 +14,6 @@
                     </div>
                 </div>
                 
-                
                 <router-link v-bind:to="'/emotes/'"><div class="close-btn" @click="hide()"><i class="fa fa-times"></i></div></router-link>
             </div>
             
