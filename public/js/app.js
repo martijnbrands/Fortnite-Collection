@@ -49766,6 +49766,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -49778,8 +49779,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             emotes: [],
             search: '',
+            rarityFilter: '',
+            nameFilter: '',
             sort: '',
-            options: [{ label: 'All', value: '' }, { label: 'Common', value: 'common' }, { label: 'Uncommon', value: 'uncommon' }, { label: 'Rare', value: 'rare' }, { label: 'Epic', value: 'epic' }, { label: 'Legendary', value: 'legendary' }],
+            rarities: [{ label: 'All', value: '' }, { label: 'Common', value: 'common' }, { label: 'Uncommon', value: 'uncommon' }, { label: 'Rare', value: 'rare' }, { label: 'Epic', value: 'epic' }, { label: 'Legendary', value: 'legendary' }],
             id: this.$route.params.id
         };
     },
@@ -49792,7 +49795,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchEmotes: function fetchEmotes() {
             var _this = this;
 
-            axios.get("/emotes/fetch").then(function (response) {
+            axios.get("/emotes/fetch?rarity=" + this.rarityFilter + "&title=" + this.nameFilter, {}).then(function (response) {
                 _this.emotes = response.data.emotes;
             }).catch(function (error) {
                 console.log("Something went wrong fetching the emotes.");
@@ -49800,23 +49803,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         checkActive: function checkActive(emoteId) {
             if (this.id == emoteId) return true;
-        }
-    },
-
-    computed: {
-        searchFilter: function searchFilter() {
-            var _this2 = this;
-
-            return this.emotes.filter(function (emote) {
-                return emote.title.toLowerCase().match(_this2.search.toLowerCase());
-            });
-        },
-        rarityFilter: function rarityFilter() {
-            var _this3 = this;
-
-            return this.emotes.filter(function (emote) {
-                return emote.rarity.match(_this3.sort);
-            });
         }
     }
 });
@@ -49830,83 +49816,86 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.search,
-            expression: "search"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Search Emotes" },
-        domProps: { value: _vm.search },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.search = $event.target.value
-          }
-        }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c(
-        "select",
-        {
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "form-group col-md-6" }, [
+        _c("label", [_vm._v("Search by name")]),
+        _vm._v(" "),
+        _c("input", {
           directives: [
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.sort,
-              expression: "sort"
+              value: _vm.nameFilter,
+              expression: "nameFilter"
             }
           ],
           staticClass: "form-control",
+          attrs: { type: "text", placeholder: "Search Emotes" },
+          domProps: { value: _vm.nameFilter },
           on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.sort = $event.target.multiple
-                ? $$selectedVal
-                : $$selectedVal[0]
+            keyup: function($event) {
+              _vm.fetchEmotes()
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.nameFilter = $event.target.value
             }
           }
-        },
-        _vm._l(_vm.options, function(item) {
-          return _c("option", {
-            attrs: { label: item.label },
-            domProps: { value: item.value }
-          })
         })
-      )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group col-md-6" }, [
+        _c("label", [_vm._v("Filter by rarity")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.rarityFilter,
+                expression: "rarityFilter"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.rarityFilter = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                function($event) {
+                  _vm.fetchEmotes()
+                }
+              ]
+            }
+          },
+          _vm._l(_vm.rarities, function(rarity) {
+            return _c("option", {
+              attrs: { label: rarity.label },
+              domProps: { value: rarity.value }
+            })
+          })
+        )
+      ])
     ]),
     _vm._v(" "),
     _c(
       "div",
       { staticClass: "emote-grid" },
-      _vm._l(_vm.rarityFilter, function(emote) {
-        return _c("emote", {
-          key: emote.id,
-          attrs: { "emote-data": emote, active: _vm.checkActive(emote.id) }
-        })
-      })
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "emote-grid" },
-      _vm._l(_vm.searchFilter, function(emote) {
+      _vm._l(_vm.emotes, function(emote) {
         return _c("emote", {
           key: emote.id,
           attrs: { "emote-data": emote, active: _vm.checkActive(emote.id) }

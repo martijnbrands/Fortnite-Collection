@@ -2,22 +2,23 @@
 
     <section>
 
-        <div class="form-group">
-            <input type="text" v-model="search" class="form-control" placeholder="Search Emotes">
-        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Search by name</label>
+                <input type="text" v-model="nameFilter" @keyup="fetchEmotes()" class="form-control" placeholder="Search Emotes">
+            </div>
 
 
-        <div class="form-group">
-            <select class="form-control" v-model="sort">
-                <option  v-for="item in options" :label="item.label" :value="item.value"></option>
-            </select>
+            <div class="form-group col-md-6">
+                <label>Filter by rarity</label>
+                <select class="form-control" @change="fetchEmotes()" v-model="rarityFilter">
+                    <option  v-for="rarity in rarities" :label="rarity.label" :value="rarity.value"></option>
+                </select>
+            </div>
         </div>
 
-         <div class="emote-grid">
-            <emote v-for="emote in rarityFilter" v-bind:key="emote.id" :emote-data="emote" :active="checkActive(emote.id)" ></emote>
-        </div>
         <div class="emote-grid">
-            <emote v-for="emote in searchFilter" v-bind:key="emote.id" :emote-data="emote" :active="checkActive(emote.id)" ></emote>
+            <emote v-for="emote in emotes" v-bind:key="emote.id" :emote-data="emote" :active="checkActive(emote.id)" ></emote>
         </div>
 
     </section> 
@@ -36,8 +37,10 @@
             return {
                 emotes: [],
                 search: '',
+                rarityFilter: '',
+                nameFilter: '',
                 sort: '',
-                options: [
+                rarities: [
                     { label: 'All', value: '' },
                     { label: 'Common', value: 'common' },
                     { label: 'Uncommon', value: 'uncommon' },
@@ -56,7 +59,8 @@
         methods:{
             
             fetchEmotes(){
-                axios.get("/emotes/fetch")
+                axios.get("/emotes/fetch?rarity=" + this.rarityFilter + "&title=" + this.nameFilter, {
+                    })
                     .then((response) => {
                         this.emotes = response.data.emotes;
                     })
@@ -67,21 +71,7 @@
 
             checkActive(emoteId){
                 if(this.id == emoteId) return true;
-            }
-
-        },
-
-        computed:{
-            searchFilter: function() {
-                return this.emotes.filter((emote) => {
-                    return emote.title.toLowerCase().match(this.search.toLowerCase());
-                });
             },
-            rarityFilter: function() {
-                return this.emotes.filter((emote) => {
-                    return emote.rarity.match(this.sort);
-                });
-            }
         }
     }
 </script>
