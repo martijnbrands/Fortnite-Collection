@@ -49792,8 +49792,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchEmotes: function fetchEmotes() {
             var _this = this;
 
-            this.$http.get("/emotes/fetch").then(function (response) {
+            axios.get("/emotes/fetch").then(function (response) {
                 _this.emotes = response.data.emotes;
+            }).catch(function (error) {
+                console.log("Something went wrong fetching the emotes.");
             });
         },
         checkActive: function checkActive(emoteId) {

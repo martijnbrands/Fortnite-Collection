@@ -56,8 +56,13 @@
         methods:{
             
             fetchEmotes(){
-                this.$http.get("/emotes/fetch")
-                    .then(response => {this.emotes = response.data.emotes})
+                axios.get("/emotes/fetch")
+                    .then((response) => {
+                        this.emotes = response.data.emotes;
+                    })
+                    .catch((error) => {
+                        console.log("Something went wrong fetching the emotes.")
+                    });
             },
 
             checkActive(emoteId){

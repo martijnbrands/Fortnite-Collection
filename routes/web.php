@@ -17,11 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/emotes', 'EmotesController@index')->name('emotes');
-Route::get('/emotes/fetch', 'EmotesController@fetch')->name('emotes.fetch');
-Route::get('/emotes/{emote}', 'EmotesController@show')->name('emote.show');
-
 Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/emotes/create', 'EmotesController@create')->name('emotes.create');
@@ -30,3 +25,8 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('/emotes/{emote}/edit', 'EmotesController@edit')->name('emotes.edit');
     Route::post('/emotes/{emote}', 'EmotesController@update')->name('emotes.update');
 });
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/emotes', 'EmotesController@index')->name('emotes');
+Route::get('/emotes/fetch', 'EmotesController@fetch')->name('emotes.fetch');
+Route::get('/emotes/{emote}', 'EmotesController@show')->name('emote.show');
