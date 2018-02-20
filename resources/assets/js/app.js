@@ -21,7 +21,6 @@ window.Vue = Vue;
 import emotes from './components/Emotes.vue';
 import emote from './components/Emote.vue';
 
-Vue.use(require('vue-resource'));
 Vue.use(VueRouter)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));

@@ -116,13 +116,12 @@ class EmotesController extends Controller
     public function fetch(Request $request)
     {
         if(request('rarity') != ''){
-            $emotes = Emote::where('rarity', request('rarity'))
-            ->where('title', 'LIKE', '%' . request('title') . '%')
-            ->get();
-        }else{
-            $emotes = Emote::where('title', 'LIKE', '%' . request('title') . '%')->get();
+            $emotes = Emote::where('rarity', request('rarity'));
+        }else {
+            $emotes = Emote::latest();
         }
-        
+
+        $emotes = $emotes->where('title', 'LIKE', '%' . request('title') . '%')->get();
 
         return response()->json(['emotes'=>$emotes]);
     }
