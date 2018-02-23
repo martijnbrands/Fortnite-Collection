@@ -617,7 +617,7 @@ module.exports = function normalizeComponent (
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.12.9
+ * @version 1.13.0
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -49948,7 +49948,7 @@ exports = module.exports = __webpack_require__(47)(false);
 
 
 // module
-exports.push([module.i, "\n.emote-detail { -webkit-transition: .3s; transition: .3s;\n}\n.emote-detail.is-active {\n    right: 0;\n    -webkit-transition: .3s;\n    transition: .3s;\n}\n", ""]);
+exports.push([module.i, "\n.emote-detail { -webkit-transition: .3s; transition: .3s;z-index: 100;\n}\n.overlay{\n    width: 100%;\n    height: 100vh;\n    position: fixed;\n    left: 0;\n    top: 0;\n    opacity: 0;\n    visibility: hidden;\n    background: rgba(0,0,0,0.3);\n    -webkit-transition: .3s;\n    transition: .3s;\n    z-index: -1;\n}\n.emote-detail.is-active {\n    right: 0;\n    -webkit-transition: .3s;\n    transition: .3s;\n}\n.emote-detail.is-active .overlay{\n    visibility: visible;\n    opacity: 1;\n    -webkit-transition: .3s;\n    transition: .3s;\n}\n", ""]);
 
 // exports
 
@@ -50348,6 +50348,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -50393,12 +50413,12 @@ var render = function() {
         "div",
         {
           staticClass: "emote-detail",
-          class: [{ "is-active": _vm.activated }, _vm.emote.rarity]
+          class: [{ "is-active": _vm.activated }]
         },
         [
           _c(
             "div",
-            { staticClass: "container" },
+            { staticClass: "container", class: _vm.emote.rarity },
             [
               _c("div", { staticClass: "row align-items-center" }, [
                 _c("div", { staticClass: "col" }, [
@@ -50431,6 +50451,20 @@ var render = function() {
                 )
               ])
             ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "overlay",
+              on: {
+                click: function($event) {
+                  _vm.hide()
+                }
+              }
+            },
+            [_c("router-link", { attrs: { to: "/emotes/" } })],
             1
           )
         ]

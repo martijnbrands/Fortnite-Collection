@@ -10221,23 +10221,23 @@ a.text-dark:focus {
   height: 100vh;
 }
 
-.emote-detail.common {
+.emote-detail .container.common {
   background-color: #c9cad8;
 }
 
-.emote-detail.uncommon {
+.emote-detail .container.uncommon {
   background-color: #8CCC4E;
 }
 
-.emote-detail.rare {
+.emote-detail .container.rare {
   background-color: #1ac2fe;
 }
 
-.emote-detail.epic {
+.emote-detail .container.epic {
   background-color: #b83df2;
 }
 
-.emote-detail.legendary {
+.emote-detail .container.legendary {
   background-color: #eb9257;
 }
 
